@@ -13,3 +13,8 @@
         输出样例：
         15
  */
+public class Week41 {
+    public static void main (String args[]) {
+        
+    }
+}
