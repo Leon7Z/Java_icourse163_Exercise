@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
 素数和（5分）
         题目内容：
@@ -15,6 +17,27 @@
  */
 public class Week41 {
     public static void main (String args[]) {
-        
+        int[] prime = new int[200];
+        int k = 1;
+        int result = 0;
+        prime[0] = 2;
+        MAIN_LOOP:
+        for (int i = 3; k < prime.length; i += 2) {
+            for (int j = 0; j < k ; j++) {
+                if (i % prime[j] == 0) {
+                    continue MAIN_LOOP;
+                }
+            }
+            prime[k++] = i;
+        }
+        Scanner input = new Scanner(System.in);
+        int n,m;
+        n = input.nextInt();
+        m = input.nextInt();
+        input.close();
+        for (; n <= m; n++) {
+            result += prime[n-1];
+        }
+        System.out.println(result);
     }
 }
