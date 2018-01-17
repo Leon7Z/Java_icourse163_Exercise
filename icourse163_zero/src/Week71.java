@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  分解质因数
         题目内容：
@@ -18,37 +16,20 @@ import java.util.Scanner;
         输出样例：
         18=2x3x3
  */
+import java.util.Scanner;
 public class Week71 {
-    public static void main(String args[]) {
-        Scanner input = new Scanner(System.in);
-        int in = input.nextInt();
-        decomposition(in);
-    }
-    public static void decomposition (int o) {
-        //构造素数集合
-        boolean[] numbers = new boolean[5001];
-        for (int i = 2;i < numbers.length; i++) {
-            numbers[i] = true;
-        }
-        for (int j = 2;j < numbers.length; j++) {
-            if (numbers[j]) {
-                for (int k = 2; j * k < numbers.length; k++) {
-                    numbers[j * k] = false;
-                }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int number = in.nextInt();
+        System.out.print(number+"=");
+        for(int i=2;i<=number/2;++i){
+            if(number%i==0){
+                number/=i;
+                System.out.print(i+"x");
+                --i;
             }
         }
-        int x = 0;
-        for (int i = 2; i < numbers.length; i++) {
-            if (numbers[i]) {
-                x++;
-            }
-        }
-        int[]prime = new int[x];
-        for (int i = 0,k = 0; i < numbers.length; i++) {
-            if (numbers[i]) {
-                prime[k] = i;
-                k++;
-            }
-        }
+        System.out.println(number);
+        in.close();
     }
 }
